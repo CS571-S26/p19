@@ -1,111 +1,248 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Palette */
+  --navy:          #080818;
+  --navy-light:    #0d0d28;
+  --navy-card:     #0a0a20;
+  --purple:        #6b21a8;
+  --purple-light:  #a78bfa;
+  --purple-glow:   rgba(107, 33, 168, 0.35);
+  --blue:          #3b82f6;
+  --blue-glow:     rgba(59, 130, 246, 0.3);
+  --gold:          #c9a84c;
+  --gold-bright:   #e2c06a;
+  --gold-muted:    #8a6e28;
+  --gold-glow:     rgba(201, 168, 76, 0.45);
+  --text-primary:  #f0e6ff;
+  --text-secondary:#a89bc2;
+  --border-gold:   rgba(201, 168, 76, 0.18);
+  --border-purple: rgba(107, 33, 168, 0.45);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Fonts */
+  --font-heading:  'Cormorant Garant', Georgia, serif;
+  --font-body:     'Inter', system-ui, sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  font: 15px/1.7 var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--navy);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  background-color: var(--navy);
+  color: var(--text-primary);
+  min-height: 100vh;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
+p, li, label, span {
+  font-family: var(--font-body);
+}
+
+a { color: var(--gold-bright); }
+a:hover { color: var(--text-primary); }
+
+/* ── Utility classes ────────────────────────── */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-purple);
+  box-shadow: 0 0 20px rgba(107, 33, 168, 0.18), inset 0 0 20px rgba(255,255,255,0.02);
+  border-radius: 8px;
+}
+
+.glass-card-gold {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+  border-radius: 8px;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+  border: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 2rem;
   border-radius: 4px;
-  color: var(--text-h);
+  transition: box-shadow 0.25s, transform 0.15s;
+  cursor: pointer;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.btn-gradient:hover, .btn-gradient:focus {
+  box-shadow: 0 0 22px var(--purple-glow), 0 0 10px var(--blue-glow);
+  transform: translateY(-1px);
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 2rem;
+  border-radius: 4px;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  box-shadow: 0 0 14px var(--gold-glow);
+  background: transparent;
+}
+
+.text-gold { color: var(--gold) !important; }
+.text-muted-custom { color: var(--text-secondary) !important; }
+
+.page-wrapper {
+  padding-top: 90px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Star twinkle ───────────────────────────── */
+@keyframes twinkle {
+  from { opacity: 0.15; transform: scale(0.85); }
+  to   { opacity: 0.95; transform: scale(1.1); }
+}
+
+/* ── Countdown ──────────────────────────────── */
+.countdown-wrap {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.countdown-number {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 0 30px var(--gold-glow);
+}
+
+.countdown-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 0.4rem;
+}
+
+/* ── Section divider ────────────────────────── */
+.divider-fancy {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 3.5rem 0;
+}
+
+.divider-line-left {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-muted));
+}
+
+.divider-line-right {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to left, transparent, var(--gold-muted));
+}
+
+.divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  margin: 0 18px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--gold-glow);
+}
+
+/* ── Form controls ──────────────────────────── */
+.form-control-dark,
+.form-select-dark {
+  background-color: rgba(255,255,255,0.04) !important;
+  border: 1px solid var(--border-purple) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  border-radius: 4px !important;
+}
+
+.form-control-dark::placeholder { color: var(--text-secondary) !important; }
+
+.form-control-dark:focus,
+.form-select-dark:focus {
+  background-color: rgba(255,255,255,0.06) !important;
+  border-color: var(--purple-light) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.25) !important;
+  outline: none !important;
+}
+
+.form-select-dark option {
+  background-color: var(--navy-light);
+  color: var(--text-primary);
+}
+
+.form-label-dark {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.confirmation-box {
+  background: rgba(107, 33, 168, 0.1);
+  border: 1px solid var(--border-purple);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
 }

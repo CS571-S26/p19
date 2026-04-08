@@ -1,0 +1,315 @@
+import { useEffect, useRef, useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+// ── Scroll-reveal hook ────────────────────────────────────────
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, visible };
+}
+
+// ── Reveal wrapper ────────────────────────────────────────────
+function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const { ref, visible } = useReveal();
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(30px)',
+        transition: `opacity 0.55s ease ${delay}s, transform 0.55s ease ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+// ── Data ──────────────────────────────────────────────────────
+const departments: {
+  dept: string;
+  email: string;
+  members: { name: string; }[];
+}[] = [
+  {
+    dept: 'Directors',
+    email: 'nakshatrauw@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Events',
+    email: 'nakshatrauw.relations@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Finance',
+    email: 'nakshatrauw.finance@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Fundraising',
+    email: 'nakshatrauw.finance@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Head Liasion',
+    email: 'nakshatrauw.relations@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Hospitality',
+    email: 'nakshatrauw.finance@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Judging',
+    email: 'nakshatrauw.relations@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Logistics',
+    email: 'nakshatrauw.finance@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Marketing',
+    email: 'nakshatrauw.relations@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Philanthrophy',
+    email: 'nakshatrauw.relations@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Registration',
+    email: 'nakshatrauw.relations@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Risk and Affiliation',
+    email: 'nakshatrauw.relations@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+  {
+    dept: 'Tech',
+    email: 'nakshatrauw.finance@gmail.com',
+    members: [
+      { name: 'Name TBD' },
+      { name: 'Name TBD' },
+    ],
+  },
+];
+
+const stats = [
+  { value: '8',  label: 'Competing Teams' },
+  { value: '1',  label: 'Stage' },
+  { value: '6+', label: 'Dance Forms' },
+  { value: 'UW', label: 'Madison' },
+];
+
+function Divider() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', margin: '3.5rem 0' }}>
+      <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, transparent, var(--gold-muted))' }} />
+      <div style={{ width: '7px', height: '7px', background: 'var(--gold)', transform: 'rotate(45deg)', margin: '0 16px', boxShadow: '0 0 8px var(--gold-glow)' }} />
+      <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, transparent, var(--gold-muted))' }} />
+    </div>
+  );
+}
+
+// ── Page ──────────────────────────────────────────────────────
+export default function About() {
+  return (
+    <div className="page-wrapper" style={{ paddingBottom: '100px' }}>
+      <Container>
+
+        {/* Heading */}
+        <Row className="text-center mb-2">
+          <Col>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--purple-light)', marginBottom: '0.75rem' }}>
+              Who We Are
+            </p>
+            <h1 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 700, letterSpacing: '0.08em', marginBottom: '1.5rem' }}>
+              About Us
+            </h1>
+          </Col>
+        </Row>
+
+        {/* Narrative */}
+        <Row className="justify-content-center mb-4">
+          <Col lg={8}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.9, marginBottom: '1.25rem' }}>
+              Nakshatra is the premier Indian classical dance competition at the University of
+              Wisconsin-Madison, showcasing the rich traditions of Indian dance. This annual event
+              invites eight highly skilled Indian classical dance teams from across the nation.
+            </p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.9, marginBottom: '1.25rem' }}>
+              The competition is organized by a dedicated executive board, supported by liaisons
+              and event managers, who work tirelessly to deliver a spectacular cultural showcase.
+              Nakshatra not only celebrates the art of Indian classical dance but also enriches the
+              Madison community by offering a glimpse into various classical Indian dance forms.
+            </p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.9, margin: 0 }}>
+              Affiliated with the Multicultural Student Center at the University of Wisconsin–Madison,
+              Nakshatra is open to all students and welcomes anyone passionate about Indian culture,
+              the performing arts, and community-building.
+            </p>
+          </Col>
+        </Row>
+
+        {/* Stats */}
+        <Row className="justify-content-center mb-2">
+          <Col lg={8}>
+            <div className="glass-card" style={{ padding: '2rem 1rem', marginTop: '1rem' }}>
+              <Row className="g-3 text-center">
+                {stats.map(s => (
+                  <Col key={s.label} xs={6} md={3}>
+                    <div style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, color: 'var(--gold)', lineHeight: 1, textShadow: '0 0 20px var(--gold-glow)' }}>
+                      {s.value}
+                    </div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginTop: '0.4rem' }}>
+                      {s.label}
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          </Col>
+        </Row>
+
+        <Divider />
+
+        {/* Executive Board heading */}
+        <Row className="mb-5">
+          <Col>
+            <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 700, letterSpacing: '0.06em', marginBottom: '0.4rem' }}>
+              Executive Board
+            </h2>
+            <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.92rem', margin: 0 }}>
+              Questions? Reach the full team at{' '}
+              <a href="mailto:nakshatrauw@gmail.com" style={{ color: 'var(--gold)', textDecoration: 'none' }}>
+                nakshatrauw@gmail.com
+              </a>
+            </p>
+          </Col>
+        </Row>
+
+        {/* Department sections — each dept is its own reveal group */}
+        {departments.map((dept, di) => (
+          <div key={dept.dept} style={{ marginBottom: '2.5rem' }}>
+
+            {/* Department title slides up first */}
+            <Reveal delay={0}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <h4 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.5rem', fontWeight: 600, letterSpacing: '0.06em', margin: 0 }}>
+                  {dept.dept}
+                </h4>
+                <div style={{ flex: 1, height: '1px', background: 'var(--border-gold)' }} />
+                <a href={`mailto:${dept.email}`} style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--text-secondary)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                  {dept.email}
+                </a>
+              </div>
+            </Reveal>
+
+            {/* Cards stagger in after the title */}
+            <Row className="g-2">
+              {dept.members.map((m, mi) => (
+                <Col key={mi} xs={12} sm={6} md={4} lg={3}>
+                  <Reveal delay={0.1 + mi * 0.08}>
+                    <div className="glass-card" style={{ padding: '1.1rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                      <div style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.92rem' }}>
+                        {m.name}
+                      </div>
+                    </div>
+                  </Reveal>
+                </Col>
+              ))}
+            </Row>
+
+            {di < departments.length - 1 && (
+              <div style={{ height: '1px', background: 'var(--border-gold)', marginTop: '2rem', opacity: 0.4 }} />
+            )}
+          </div>
+        ))}
+
+        <Divider />
+
+        {/* Affiliation */}
+        <Row className="justify-content-center">
+          <Col md={6} className="text-center">
+            <Reveal>
+              <div className="glass-card" style={{ padding: '2rem' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                  Affiliation
+                </p>
+                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', color: 'var(--text-primary)', fontWeight: 600, marginBottom: '0.25rem' }}>
+                  Multicultural Student Center
+                </p>
+                <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>
+                  University of Wisconsin–Madison
+                </p>
+              </div>
+            </Reveal>
+          </Col>
+        </Row>
+
+      </Container>
+    </div>
+  );
+}
