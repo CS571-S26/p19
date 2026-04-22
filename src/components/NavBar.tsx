@@ -19,7 +19,9 @@ export default function NavBar() {
           <Nav className="ms-auto gap-1">
             <Nav.Link as={NavLink} to="/" end className="nav-link-custom">Home</Nav.Link>
             <Nav.Link as={NavLink} to="/competition" className="nav-link-custom">Competition</Nav.Link>
+            <Nav.Link as={NavLink} to="/events" className="nav-link-custom">Events</Nav.Link>
             <Nav.Link as={NavLink} to="/about" className="nav-link-custom">About</Nav.Link>
+            <Nav.Link as={NavLink} to="/apply" className="nav-link-custom">Apply</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
