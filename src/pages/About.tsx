@@ -28,7 +28,7 @@ function useReveal() {
 }
 
 // ── Reveal wrapper ────────────────────────────────────────────
-function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function Reveal({ children, delay = 0, height }: { children: React.ReactNode; delay?: number; height?: string }) {
   const { ref, visible } = useReveal();
   return (
     <div
@@ -37,6 +37,7 @@ function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(30px)',
         transition: `opacity 0.55s ease ${delay}s, transform 0.55s ease ${delay}s`,
+        height,
       }}
     >
       {children}
@@ -290,19 +291,49 @@ export default function About() {
 
         <Divider />
 
-        {/* Affiliation */}
-        <Row className="justify-content-center">
-          <Col md={6} className="text-center">
-            <Reveal>
-              <div className="glass-card" style={{ padding: '2rem' }}>
+        {/* Affiliations */}
+        <Row className="g-4 align-items-stretch">
+          <Col md={4} style={{ display: 'flex', flexDirection: 'column' }}>
+            <Reveal delay={0} height="100%">
+              <div className="glass-card" style={{ flex: 1, padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
                   Affiliation
                 </p>
-                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', color: 'var(--text-primary)', fontWeight: 600, marginBottom: '0.25rem' }}>
-                  Multicultural Student Center
+                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', color: 'var(--text-primary)', fontWeight: 600, marginBottom: '0.5rem' }}>
+                  Multicultural Student Center (MSC)
                 </p>
                 <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>
-                  University of Wisconsin–Madison
+                  Dual-affiliated with the Multicultural Student Center (MSC) at UW-Madison. Through the MSC affiliation program, Nakshatra gains access to priority space reservations, eligibility for the Multicultural Council Grant, and co-sponsorship opportunities with Identity Centers.
+                </p>
+              </div>
+            </Reveal>
+          </Col>
+          <Col md={4} style={{ display: 'flex', flexDirection: 'column' }}>
+            <Reveal delay={0.1} height="100%">
+              <div className="glass-card" style={{ flex: 1, padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                  Affiliation
+                </p>
+                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', color: 'var(--text-primary)', fontWeight: 600, marginBottom: '0.5rem' }}>
+                  International Student Services (ISS)
+                </p>
+                <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>
+                  Affiliated with International Student Services (ISS) at UW-Madison. Through this affiliation, Nakshatra has the opportunity to host Global Café, a biweekly cultural event bringing together international and U.S. students, table at the International Student Organization Fair, and access additional funding through the Global Badger Experience Grant (GBEG).
+                </p>
+              </div>
+            </Reveal>
+          </Col>
+          <Col md={4} style={{ display: 'flex', flexDirection: 'column' }}>
+            <Reveal delay={0.2} height="100%">
+              <div className="glass-card" style={{ flex: 1, padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                  Accreditation
+                </p>
+                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', color: 'var(--text-primary)', fontWeight: 600, marginBottom: '0.5rem' }}>
+                  SOLI Accredited RSO
+                </p>
+                <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>
+                  Recognized as an Accredited RSO by the Office for Student Organizations, Leadership & Involvement (SOLI) at UW-Madison, an acknowledgement of our commitment to member experience and organizational excellence.
                 </p>
               </div>
             </Reveal>

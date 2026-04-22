@@ -9,32 +9,46 @@ const roles = [
     icon: '👑',
     title: 'Executive Board',
     description:
-      'The core leadership team behind Nakshatra. Board members drive the vision, manage the organization, and oversee all aspects of the annual competition — from logistics to sponsorships.',
-    requirements: ['Strong organizational & leadership skills', 'Prior event or leadership experience preferred', 'Significant time commitment throughout the year'],
+      'Lead the vision and operations of Nakshatra. Executive board members oversee all aspects of the competition from securing venues and sponsors to managing judges, logistics, marketing, and more. Roles include Events, Finance, Fundraising, Head Liaisons, Hospitality, Judging, Logistics, Marketing, Philanthropy, Registration, Risk & Affiliation, and Tech.',
+    requirements: [
+      'Strong organizational and leadership skills',
+      'Significant time commitment throughout the academic year',
+      'Prior event or leadership experience preferred',
+    ],
   },
   {
     icon: '🤝',
     title: 'Liaison',
     description:
-      'Liaisons serve as the primary point of contact between Nakshatra and the competing dance teams. You coordinate communication, manage team logistics, and ensure a seamless experience for all participants.',
-    requirements: ['Excellent communication skills', 'Detail-oriented and responsive', 'Comfortable managing multiple contacts'],
+      'Serve as the primary point of contact for your assigned competing dance team throughout competition weekend. Liaisons ensure their team moves through the weekend smoothly from tech rehearsal and hotel room decorating to crafts day and performances. You are responsible for your team\'s safety and experience from arrival to departure.',
+    requirements: [
+      'Available for the full competition weekend (Spring 2027)',
+      'Able to attend mandatory meetings and SAP/AOD training beforehand',
+      'Must complete one concession shift and obtain ServSafe certification',
+    ],
   },
   {
     icon: '📋',
     title: 'Event Manager',
     description:
-      'Event managers handle the day-of experience — coordinating volunteers, managing the venue, and ensuring everything runs smoothly. No dance experience required; organizational skills are key.',
-    requirements: ['Available for key rehearsals and event day', 'Strong problem-solving skills', 'Works well in a fast-paced environment'],
+      'Support the board and liaisons in bringing competition weekend to life. Event managers help set up the mixer, create props and decorations for crafts day, assist during performances and tech time, and fill in for liaison roles when needed. A great way to be part of the Nakshatra team without being assigned to a specific competing team.',
+    requirements: [
+      'Available for the full competition weekend (Spring 2027)',
+      'Able to attend mandatory meetings and SAP/AOD training beforehand',
+      'Must complete one concession shift and obtain ServSafe certification',
+    ],
   },
 ];
 
 const timeline = [
-  { date: 'September', event: 'Applications Open' },
-  { date: 'Late September', event: 'Info Session & Team Mixer' },
-  { date: 'Early October', event: 'Interviews & Selection' },
-  { date: 'Mid October', event: 'Offers Extended' },
+  { date: 'April 23rd, 11:59 PM CST', event: 'Executive Board Applications Close' },
+  { date: 'Late April', event: 'Executive Board Interviews' },
+  { date: 'Early May', event: 'Executive Board Finalized' },
+  { date: 'Early September', event: 'Liaison & Event Manager Recruitment Opens' },
+  { date: 'Mid-Late September', event: 'Liaison & Event Manager Interviews' },
+  { date: 'Early October', event: 'Full Team Finalized' },
   { date: 'November – March', event: 'Active Planning & Coordination' },
-  { date: 'Spring 2026', event: 'Competition Weekend' },
+  { date: 'Spring 2027', event: 'Competition Weekend' },
 ];
 
 const EXEC_FORM_URL =
@@ -44,7 +58,6 @@ interface InterestForm {
   name: string;
   email: string;
   year: string;
-  why: string;
 }
 
 const DEADLINE_NOTE = (
@@ -56,7 +69,7 @@ const DEADLINE_NOTE = (
 
 export default function Apply() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
-  const [form, setForm] = useState<InterestForm>({ name: '', email: '', year: '', why: '' });
+  const [form, setForm] = useState<InterestForm>({ name: '', email: '', year: '' });
   const [submitted, setSubmitted] = useState(false);
 
   function handleRoleSelect(title: string) {
@@ -65,7 +78,7 @@ export default function Apply() {
     } else {
       setSelectedRole(title);
       setSubmitted(false);
-      setForm({ name: '', email: '', year: '', why: '' });
+      setForm({ name: '', email: '', year: '' });
     }
   }
 
@@ -164,7 +177,7 @@ export default function Apply() {
                 {selectedRole === 'Executive Board' ? (
                   <>
                     <a href={EXEC_FORM_URL} target="_blank" rel="noopener noreferrer">
-                      <button className="btn-gradient">Apply Now</button>
+                      <button className="btn-ghost">Apply Now</button>
                     </a>
                     {DEADLINE_NOTE}
                   </>
@@ -203,20 +216,7 @@ export default function Apply() {
                         </select>
                       </Col>
                       <Col xs={12}>
-                        <label className="form-label-dark">Why do you want to join Nakshatra?</label>
-                        <textarea
-                          name="why"
-                          className="form-control form-control-dark"
-                          placeholder="Tell us a bit about yourself and your interest..."
-                          rows={4}
-                          value={form.why}
-                          onChange={handleChange}
-                          required
-                          style={{ resize: 'vertical' }}
-                        />
-                      </Col>
-                      <Col xs={12}>
-                        <button type="submit" className="btn-gradient" style={{ width: '100%' }}>
+                        <button type="submit" className="btn-ghost" style={{ width: '100%' }}>
                           Express Interest
                         </button>
                       </Col>
@@ -230,21 +230,120 @@ export default function Apply() {
 
         <SectionDivider />
 
-        <Row className="g-5">
-          {/* Timeline */}
-          <Col lg={5}>
+        <Row className="mb-2">
+          <Col>
             <h2 className="section-title mb-4"><span className="gold-underline">Timeline</span></h2>
-            {timeline.map(item => (
-              <div className="timeline-item" key={item.date}>
-                <div className="timeline-dot" />
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.72rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  {item.date}
-                </div>
-                <div style={{ color: 'var(--text-primary)', fontWeight: 500, fontSize: '0.95rem' }}>{item.event}</div>
-              </div>
-            ))}
           </Col>
         </Row>
+
+        {/* Desktop horizontal timeline */}
+        <div className="d-none d-md-block" style={{ overflowX: 'auto', paddingBottom: '1rem' }}>
+          <div style={{ position: 'relative', minWidth: '700px', padding: '100px 0 80px' }}>
+            {/* Horizontal gold line */}
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: 0,
+              right: 0,
+              height: '2px',
+              background: 'var(--gold)',
+              transform: 'translateY(-50%)',
+            }} />
+
+            {/* Items */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', position: 'relative' }}>
+              {timeline.map((item, i) => {
+                const above = i % 2 === 0;
+                return (
+                  <div key={item.date} style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    position: 'relative',
+                    flex: 1,
+                  }}>
+                    {/* Date — above the line */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: above ? 'calc(50% + 22px)' : 'auto',
+                      top: above ? 'auto' : 'calc(50% + 22px)',
+                      width: '100%',
+                      textAlign: 'center',
+                      padding: '0 4px',
+                    }}>
+                      {above ? (
+                        <>
+                          <div style={{ color: 'var(--gold)', fontSize: '0.62rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', lineHeight: 1.4 }}>
+                            {item.date}
+                          </div>
+                          <div style={{ color: 'var(--text-secondary)', fontSize: '0.78rem', fontWeight: 500, lineHeight: 1.4, marginTop: '0.25rem' }}>
+                            {item.event}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div style={{ color: 'var(--text-secondary)', fontSize: '0.78rem', fontWeight: 500, lineHeight: 1.4, marginBottom: '0.25rem' }}>
+                            {item.event}
+                          </div>
+                          <div style={{ color: 'var(--gold)', fontSize: '0.62rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', lineHeight: 1.4 }}>
+                            {item.date}
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Diamond marker on the line */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%) rotate(45deg)',
+                      width: '12px',
+                      height: '12px',
+                      background: 'var(--gold)',
+                      flexShrink: 0,
+                    }} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile vertical timeline */}
+        <div className="d-md-none" style={{ position: 'relative', paddingLeft: '2rem' }}>
+          {/* Vertical gold line */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: '7px',
+            width: '2px',
+            background: 'var(--gold)',
+          }} />
+
+          {timeline.map(item => (
+            <div key={item.date} style={{ position: 'relative', marginBottom: '2rem' }}>
+              {/* Diamond marker */}
+              <div style={{
+                position: 'absolute',
+                left: 'calc(-2rem + 1px)',
+                top: '4px',
+                width: '12px',
+                height: '12px',
+                background: 'var(--gold)',
+                transform: 'rotate(45deg)',
+                flexShrink: 0,
+              }} />
+              <div style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.2rem' }}>
+                {item.date}
+              </div>
+              <div style={{ color: 'var(--text-primary)', fontWeight: 500, fontSize: '0.92rem' }}>
+                {item.event}
+              </div>
+            </div>
+          ))}
+        </div>
       </Container>
     </div>
   );

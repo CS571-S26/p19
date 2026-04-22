@@ -54,7 +54,7 @@ export default function RSVPForm({ eventName }: RSVPFormProps) {
           required
         />
       </div>
-      <button type="submit" className="btn-gradient" style={{ width: '100%' }}>
+      <button type="submit" className="btn-ghost" style={{ width: '100%' }}>
         Confirm RSVP
       </button>
     </form>

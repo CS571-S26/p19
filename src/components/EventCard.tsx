@@ -41,7 +41,7 @@ export default function EventCard({ title, type, date, time, location, descripti
         </p>
 
         {!showRsvp ? (
-          <button className="btn-gradient" onClick={() => setShowRsvp(true)}>
+          <button className="btn-ghost" onClick={() => setShowRsvp(true)}>
             RSVP
           </button>
         ) : (

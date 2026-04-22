@@ -16,7 +16,7 @@ const events = [
   },
   {
     title: 'Cultural Night Showcase',
-    type: 'Performance',
+    type: 'Event',
     date: 'November 2026',
     time: 'TBD',
     location: 'Varsity Hall, Union South',
