@@ -34,10 +34,14 @@ export default function Home() {
                 <span className="gold-underline">What is Nakshatra?</span>
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Nakshatra is the Premier Indian classical dance competition at University of Wisconsin-Madison,
+                showcasing the rich traditions of Indian dance. This annual event invites eight highly skilled
+                Indian classical dance teams from across the nation. The competition is organized by a dedicated
+                executive board, supported by liaisons and event managers, who work tirelessly to deliver a
+                spectacular cultural showcase. Nakshatra not only celebrates the art of Indian classical dance
+                but also enriches the Madison community by offering a glimpse into various classical Indian dance
+                forms. To get involved with Nakshatra or for more updates, contact us via email at
+                nakshatrauw@gmail.com or follow our social media channels!
               </p>
               <Link to="/about">
                 <button className="btn-ghost">Learn More</button>

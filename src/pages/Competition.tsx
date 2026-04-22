@@ -23,8 +23,7 @@ export default function Competition() {
               The Competition
             </h1>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', margin: '0 auto', fontSize: '1rem', lineHeight: 1.7 }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
+              The Premier Indian Classical Dance Competition at UW-Madison
             </p>
           </Col>
         </Row>
@@ -55,15 +54,15 @@ export default function Competition() {
               <h4 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', marginBottom: '1rem' }}>
                 About the Event
               </h4>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1rem' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0 }}>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.
+                Nakshatra is the Premier Indian classical dance competition at University of Wisconsin-Madison,
+                showcasing the rich traditions of Indian dance. This annual event invites eight highly skilled
+                Indian classical dance teams from across the nation. The competition is organized by a dedicated
+                executive board, supported by liaisons and event managers, who work tirelessly to deliver a
+                spectacular cultural showcase. Nakshatra not only celebrates the art of Indian classical dance
+                but also enriches the Madison community by offering a glimpse into various classical Indian dance
+                forms. To get involved with Nakshatra or for more updates, contact us via email at
+                nakshatrauw@gmail.com or follow our social media channels!
               </p>
             </div>
           </Col>
