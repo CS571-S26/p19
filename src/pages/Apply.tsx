@@ -37,26 +37,11 @@ const timeline = [
   { date: 'Spring 2026', event: 'Competition Weekend' },
 ];
 
-interface AppForm {
-  name: string;
-  email: string;
-  year: string;
-  role: string;
-  why: string;
-}
+const EXEC_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSecbg2GtWrmJbveCSYEIktBbN7OnsKh3oxpyv7MKff7J97k7w/viewform?usp=header';
 
 export default function Apply() {
-  const [form, setForm] = useState<AppForm>({ name: '', email: '', year: '', role: '', why: '' });
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
+  const [selectedRole, setSelectedRole] = useState<string | null>(null);
 
   return (
     <div className="page-wrapper" style={{ paddingBottom: '100px' }}>
@@ -85,24 +70,83 @@ export default function Apply() {
             <h2 className="section-title mb-4"><span className="gold-underline">Open Roles</span></h2>
           </Col>
         </Row>
-        <Row className="g-4 mb-5">
-          {roles.map(role => (
-            <Col key={role.title} md={4}>
-              <div className="glass-card role-card" style={{ padding: '2rem' }}>
-                <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{role.icon}</div>
-                <h5 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.6rem' }}>
-                  {role.title}
-                </h5>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1rem' }}>
-                  {role.description}
-                </p>
-                <ul style={{ paddingLeft: '1.1rem', color: 'var(--text-secondary)', fontSize: '0.82rem', margin: 0, lineHeight: 1.8 }}>
-                  {role.requirements.map(req => <li key={req}>{req}</li>)}
-                </ul>
+        <Row className="g-4 mb-4">
+          {roles.map(role => {
+            const isSelected = selectedRole === role.title;
+            return (
+              <Col key={role.title} md={4}>
+                <div
+                  className="glass-card role-card"
+                  onClick={() => setSelectedRole(isSelected ? null : role.title)}
+                  style={{
+                    padding: '2rem',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    border: isSelected ? '2px solid var(--gold)' : '2px solid transparent',
+                    transition: 'border 0.2s ease',
+                  }}
+                >
+                  {isSelected && (
+                    <div style={{
+                      position: 'absolute',
+                      top: '0.75rem',
+                      right: '0.75rem',
+                      width: '1.4rem',
+                      height: '1.4rem',
+                      borderRadius: '50%',
+                      background: 'var(--gold)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '0.75rem',
+                      color: '#000',
+                      fontWeight: 700,
+                    }}>
+                      ✓
+                    </div>
+                  )}
+                  <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{role.icon}</div>
+                  <h5 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.6rem' }}>
+                    {role.title}
+                  </h5>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1rem' }}>
+                    {role.description}
+                  </p>
+                  <ul style={{ paddingLeft: '1.1rem', color: 'var(--text-secondary)', fontSize: '0.82rem', margin: 0, lineHeight: 1.8 }}>
+                    {role.requirements.map(req => <li key={req}>{req}</li>)}
+                  </ul>
+                </div>
+              </Col>
+            );
+          })}
+        </Row>
+
+        {/* Selection action area */}
+        {selectedRole && (
+          <Row className="justify-content-center mb-5">
+            <Col lg={8}>
+              <div className="glass-card" style={{ padding: '2rem', textAlign: 'center' }}>
+                {selectedRole === 'Executive Board' ? (
+                  <>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
+                      Applications are due <strong style={{ color: 'var(--text-primary)' }}>Thursday, April 23rd at 11:59 PM CST</strong>.
+                      Directors will reach out to schedule interviews after the deadline.
+                    </p>
+                    <a href={EXEC_FORM_URL} target="_blank" rel="noopener noreferrer">
+                      <button className="btn-gradient">Apply Now</button>
+                    </a>
+                  </>
+                ) : (
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>
+                    Applications for this role will be announced soon. Stay tuned or email{' '}
+                    <a href="mailto:nakshatrauw@gmail.com" style={{ color: 'var(--gold)' }}>nakshatrauw@gmail.com</a>{' '}
+                    for more information.
+                  </p>
+                )}
               </div>
             </Col>
-          ))}
-        </Row>
+          </Row>
+        )}
 
         <SectionDivider />
 
@@ -119,83 +163,6 @@ export default function Apply() {
                 <div style={{ color: 'var(--text-primary)', fontWeight: 500, fontSize: '0.95rem' }}>{item.event}</div>
               </div>
             ))}
-          </Col>
-
-          {/* Application form */}
-          <Col lg={7}>
-            <h2 className="section-title mb-4"><span className="gold-underline">Express Interest</span></h2>
-            <div className="glass-card" style={{ padding: '2rem' }}>
-              {submitted ? (
-                <div className="confirmation-box">
-                  <div style={{ fontSize: '2rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>✦</div>
-                  <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', color: 'var(--gold)', fontWeight: 600, marginBottom: '0.5rem' }}>
-                    Application Received!
-                  </p>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', margin: 0 }}>
-                    Thanks, <strong style={{ color: 'var(--text-primary)' }}>{form.name}</strong>!
-                    We'll be in touch at <strong style={{ color: 'var(--text-primary)' }}>{form.email}</strong> when
-                    applications open for the {form.role || 'selected'} role.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <Row className="g-3">
-                    <Col sm={6}>
-                      <label className="form-label-dark">Full Name</label>
-                      <input name="name" className="form-control form-control-dark" placeholder="Your name" value={form.name} onChange={handleChange} required />
-                    </Col>
-                    <Col sm={6}>
-                      <label className="form-label-dark">Email</label>
-                      <input name="email" type="email" className="form-control form-control-dark" placeholder="your@wisc.edu" value={form.email} onChange={handleChange} required />
-                    </Col>
-                    <Col sm={6}>
-                      <label className="form-label-dark">Year</label>
-                      <select name="year" className="form-select form-select-dark" value={form.year} onChange={handleChange} required>
-                        <option value="">Select year</option>
-                        <option>Freshman</option>
-                        <option>Sophomore</option>
-                        <option>Junior</option>
-                        <option>Senior</option>
-                        <option>Graduate Student</option>
-                      </select>
-                    </Col>
-                    <Col sm={6}>
-                      <label className="form-label-dark">Role Interest</label>
-                      <select name="role" className="form-select form-select-dark" value={form.role} onChange={handleChange} required>
-                        <option value="">Select a role</option>
-                        <option>Executive Board</option>
-                        <option>Liaison</option>
-                        <option>Event Manager</option>
-                        <option>Unsure — Tell me more</option>
-                      </select>
-                    </Col>
-                    <Col xs={12}>
-                      <label className="form-label-dark">Why do you want to join Nakshatra?</label>
-                      <textarea
-                        name="why"
-                        className="form-control form-control-dark"
-                        placeholder="Tell us a bit about yourself and your interest..."
-                        rows={4}
-                        value={form.why}
-                        onChange={handleChange}
-                        required
-                        style={{ resize: 'vertical' }}
-                      />
-                    </Col>
-                    <Col xs={12}>
-                      <button type="submit" className="btn-gradient" style={{ width: '100%' }}>
-                        Submit Application
-                      </button>
-                    </Col>
-                  </Row>
-                </form>
-              )}
-            </div>
-
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textAlign: 'center', marginTop: '1rem' }}>
-              Questions? Email us at{' '}
-              <a href="mailto:nakshatrauw@gmail.com" style={{ color: 'var(--gold)' }}>nakshatrauw@gmail.com</a>
-            </p>
           </Col>
         </Row>
       </Container>

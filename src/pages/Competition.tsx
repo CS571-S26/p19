@@ -4,8 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 const placeholders = [
-  { icon: '📅', label: 'Date', value: 'TBD — Spring 2026' },
-  { icon: '📍', label: 'Venue', value: 'TBD — UW-Madison Campus' },
+  { icon: '📅', label: 'Date', value: 'Spring 2027' },
+  { icon: '📍', label: 'Venue', value: 'TBD' },
   { icon: '🎟️', label: 'Admission', value: 'Free & open to the public' },
   { icon: '🎞️', label: 'Livestream', value: 'Link to be announced' },
 ];
@@ -23,7 +23,7 @@ export default function Competition() {
               The Competition
             </h1>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', margin: '0 auto', fontSize: '1rem', lineHeight: 1.7 }}>
-              An evening of artistry, culture, and competition — eight elite collegiate teams take the stage at UW-Madison.
+              An evening of artistry, culture, and competition where eight elite collegiate teams take the stage at UW-Madison.
             </p>
           </Col>
         </Row>
@@ -57,7 +57,7 @@ export default function Competition() {
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0 }}>
                 Eight of the most talented collegiate Indian classical dance teams from across the nation come
                 together on a single stage at UW-Madison. Teams compete across multiple classical Indian dance
-                forms including Bharatanatyam, Kathak, Odissi, Kuchipudi, Mohiniyattam, and Fusion. The event
+                forms including Bharatanatyam, Kathak, Odissi, Kuchipudi, Mohiniyattam, and more. The event
                 is free and open to the public, and a livestream link will be made available for those unable to
                 attend in person. Come experience an unforgettable evening of artistry, culture, and competition.
               </p>

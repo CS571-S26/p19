@@ -6,29 +6,29 @@ import SectionDivider from '../components/SectionDivider';
 
 const events = [
   {
-    title: 'Info Session & Team Mixer',
+    title: 'Nakshatra Mixer',
     type: 'Info Session',
-    date: 'September 2025',
-    time: '6:00 PM – 8:00 PM',
-    location: 'Union South, UW-Madison',
+    date: 'September 2026',
+    time: 'TBD',
+    location: 'TBD',
     description:
-      "Kick off the year with the Nakshatra team. Learn about open roles — executive board, liaisons, and event managers — and find out how to get involved with Wisconsin's premier Indian classical dance competition.",
+      "Kick off the year with the Nakshatra team. Learn about being a liaison or event manager and find out how to get involved with Wisconsin's premier Indian classical dance competition.",
   },
   {
     title: 'Cultural Night Showcase',
     type: 'Performance',
-    date: 'November 2025',
-    time: '7:00 PM – 9:30 PM',
-    location: 'Shannon Hall, Memorial Union',
+    date: 'November 2026',
+    time: 'TBD',
+    location: 'Varsity Hall, Union South',
     description:
-      'An evening of classical and fusion performances by Nakshatra members and invited guest artists. Celebrate the diversity of Indian classical dance — Bharatanatyam, Kathak, Odissi, and more. Free admission.',
+      'Join us for an evening dedicated to raising awareness for our philanthropic partners. Come support and celebrate the incredible organizations we work with on campus!',
   },
   {
     title: 'Nakshatra 2026 Competition',
     type: 'Competition',
-    date: 'Spring 2026 — Date TBD',
+    date: 'Spring 2027',
     time: 'TBD',
-    location: 'UW-Madison Campus — Venue TBD',
+    location: 'TBD',
     description:
       'The main event. Eight elite collegiate teams from across the nation take the stage for the annual Nakshatra Indian classical dance competition. Free and open to the public.',
   },
