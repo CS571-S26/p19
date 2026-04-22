@@ -23,7 +23,7 @@ export default function Competition() {
               The Competition
             </h1>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', margin: '0 auto', fontSize: '1rem', lineHeight: 1.7 }}>
-              The Premier Indian Classical Dance Competition at UW-Madison
+              An evening of artistry, culture, and competition — eight elite collegiate teams take the stage at UW-Madison.
             </p>
           </Col>
         </Row>
@@ -55,14 +55,11 @@ export default function Competition() {
                 About the Event
               </h4>
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0 }}>
-                Nakshatra is the Premier Indian classical dance competition at University of Wisconsin-Madison,
-                showcasing the rich traditions of Indian dance. This annual event invites eight highly skilled
-                Indian classical dance teams from across the nation. The competition is organized by a dedicated
-                executive board, supported by liaisons and event managers, who work tirelessly to deliver a
-                spectacular cultural showcase. Nakshatra not only celebrates the art of Indian classical dance
-                but also enriches the Madison community by offering a glimpse into various classical Indian dance
-                forms. To get involved with Nakshatra or for more updates, contact us via email at
-                nakshatrauw@gmail.com or follow our social media channels!
+                Eight of the most talented collegiate Indian classical dance teams from across the nation come
+                together on a single stage at UW-Madison. Teams compete across multiple classical Indian dance
+                forms including Bharatanatyam, Kathak, Odissi, Kuchipudi, Mohiniyattam, and Fusion. The event
+                is free and open to the public, and a livestream link will be made available for those unable to
+                attend in person. Come experience an unforgettable evening of artistry, culture, and competition.
               </p>
             </div>
           </Col>
