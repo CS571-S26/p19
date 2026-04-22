@@ -40,8 +40,43 @@ const timeline = [
 const EXEC_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSecbg2GtWrmJbveCSYEIktBbN7OnsKh3oxpyv7MKff7J97k7w/viewform?usp=header';
 
+interface InterestForm {
+  name: string;
+  email: string;
+  year: string;
+  why: string;
+}
+
+const DEADLINE_NOTE = (
+  <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6, marginTop: '1rem', marginBottom: 0 }}>
+    Applications are due <strong style={{ color: 'var(--text-primary)' }}>Thursday, April 23rd at 11:59 PM CST</strong>.
+    Directors will reach out to schedule interviews after the deadline.
+  </p>
+);
+
 export default function Apply() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const [form, setForm] = useState<InterestForm>({ name: '', email: '', year: '', why: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleRoleSelect(title: string) {
+    if (selectedRole === title) {
+      setSelectedRole(null);
+    } else {
+      setSelectedRole(title);
+      setSubmitted(false);
+      setForm({ name: '', email: '', year: '', why: '' });
+    }
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
 
   return (
     <div className="page-wrapper" style={{ paddingBottom: '100px' }}>
@@ -77,7 +112,7 @@ export default function Apply() {
               <Col key={role.title} md={4}>
                 <div
                   className="glass-card role-card"
-                  onClick={() => setSelectedRole(isSelected ? null : role.title)}
+                  onClick={() => handleRoleSelect(role.title)}
                   style={{
                     padding: '2rem',
                     cursor: 'pointer',
@@ -128,20 +163,65 @@ export default function Apply() {
               <div className="glass-card" style={{ padding: '2rem', textAlign: 'center' }}>
                 {selectedRole === 'Executive Board' ? (
                   <>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
-                      Applications are due <strong style={{ color: 'var(--text-primary)' }}>Thursday, April 23rd at 11:59 PM CST</strong>.
-                      Directors will reach out to schedule interviews after the deadline.
-                    </p>
                     <a href={EXEC_FORM_URL} target="_blank" rel="noopener noreferrer">
                       <button className="btn-gradient">Apply Now</button>
                     </a>
+                    {DEADLINE_NOTE}
+                  </>
+                ) : submitted ? (
+                  <>
+                    <div style={{ fontSize: '2rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>✦</div>
+                    <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--gold)', fontWeight: 600, marginBottom: '0.5rem' }}>
+                      Application Received!
+                    </p>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', margin: 0 }}>
+                      Thanks, <strong style={{ color: 'var(--text-primary)' }}>{form.name}</strong>! We'll be in touch at{' '}
+                      <strong style={{ color: 'var(--text-primary)' }}>{form.email}</strong> when{' '}
+                      {selectedRole} applications open.
+                    </p>
                   </>
                 ) : (
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>
-                    Applications for this role will be announced soon. Stay tuned or email{' '}
-                    <a href="mailto:nakshatrauw@gmail.com" style={{ color: 'var(--gold)' }}>nakshatrauw@gmail.com</a>{' '}
-                    for more information.
-                  </p>
+                  <form onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
+                    <Row className="g-3">
+                      <Col sm={6}>
+                        <label className="form-label-dark">Full Name</label>
+                        <input name="name" className="form-control form-control-dark" placeholder="Your name" value={form.name} onChange={handleChange} required />
+                      </Col>
+                      <Col sm={6}>
+                        <label className="form-label-dark">Email</label>
+                        <input name="email" type="email" className="form-control form-control-dark" placeholder="your@wisc.edu" value={form.email} onChange={handleChange} required />
+                      </Col>
+                      <Col xs={12}>
+                        <label className="form-label-dark">Year</label>
+                        <select name="year" className="form-select form-select-dark" value={form.year} onChange={handleChange} required>
+                          <option value="">Select year</option>
+                          <option>Freshman</option>
+                          <option>Sophomore</option>
+                          <option>Junior</option>
+                          <option>Senior</option>
+                          <option>Graduate Student</option>
+                        </select>
+                      </Col>
+                      <Col xs={12}>
+                        <label className="form-label-dark">Why do you want to join Nakshatra?</label>
+                        <textarea
+                          name="why"
+                          className="form-control form-control-dark"
+                          placeholder="Tell us a bit about yourself and your interest..."
+                          rows={4}
+                          value={form.why}
+                          onChange={handleChange}
+                          required
+                          style={{ resize: 'vertical' }}
+                        />
+                      </Col>
+                      <Col xs={12}>
+                        <button type="submit" className="btn-gradient" style={{ width: '100%' }}>
+                          Express Interest
+                        </button>
+                      </Col>
+                    </Row>
+                  </form>
                 )}
               </div>
             </Col>
