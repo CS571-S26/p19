@@ -6,7 +6,6 @@ import SectionDivider from '../components/SectionDivider';
 
 const roles = [
   {
-    icon: '👑',
     title: 'Executive Board',
     description:
       'Lead the vision and operations of Nakshatra. Executive board members oversee all aspects of the competition from securing venues and sponsors to managing judges, logistics, marketing, and more. Roles include Events, Finance, Fundraising, Head Liaisons, Hospitality, Judging, Logistics, Marketing, Philanthropy, Registration, Risk & Affiliation, and Tech.',
@@ -17,7 +16,6 @@ const roles = [
     ],
   },
   {
-    icon: '🤝',
     title: 'Liaison',
     description:
       'Serve as the primary point of contact for your assigned competing dance team throughout competition weekend. Liaisons ensure their team moves through the weekend smoothly from tech rehearsal and hotel room decorating to crafts day and performances. You are responsible for your team\'s safety and experience from arrival to departure.',
@@ -28,7 +26,6 @@ const roles = [
     ],
   },
   {
-    icon: '📋',
     title: 'Event Manager',
     description:
       'Support the board and liaisons in bringing competition weekend to life. Event managers help set up the mixer, create props and decorations for crafts day, assist during performances and tech time, and fill in for liaison roles when needed. A great way to be part of the Nakshatra team without being assigned to a specific competing team.',
@@ -153,7 +150,6 @@ export default function Apply() {
                       ✓
                     </div>
                   )}
-                  <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{role.icon}</div>
                   <h5 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.6rem' }}>
                     {role.title}
                   </h5>
