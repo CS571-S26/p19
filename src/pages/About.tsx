@@ -285,6 +285,7 @@ export default function About() {
                       <img
                         src={m.photo}
                         alt={m.name}
+                        loading="lazy"
                         style={{
                           width: '100%',
                           height: '280px',
