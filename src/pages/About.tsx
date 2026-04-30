@@ -2,6 +2,32 @@ import { useEffect, useRef, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import sudeeksha_nooka from '../assets/sudeeksha_nooka.jpg';
+import rohan_vuppalapati from '../assets/rohan_vuppalapati.jpg';
+import rhianna_nakrani from '../assets/rhianna_nakrani.jpg';
+import diya_gopinath from '../assets/diya_gopinath.jpg';
+import mardav_shah from '../assets/mardav_shah.jpg';
+import raja_chinnakotla from '../assets/raja_chinnakotla.jpg';
+import isha_darshan_lokande from '../assets/isha_darshan_lokande.jpg';
+import sanjay_murali from '../assets/sanjay_murali.jpg';
+import srikar_kalapala from '../assets/srikar_kalapala.jpg';
+import ayush_harish from '../assets/ayush_harish.jpg';
+import kaitlyn_narman from '../assets/kaitlyn_narman.jpg';
+import akshita_tirumalaraju from '../assets/akshita_tirumalaraju.jpg';
+import sobhan_pandey from '../assets/sobhan_pandey.jpg';
+import nandini_shah from '../assets/nandini_shah.jpg';
+import vinay_ramanathan from '../assets/vinay_ramanathan.jpg';
+import aniruddh_mayya from '../assets/aniruddh_mayya.jpg';
+import prishaa_rajesh from '../assets/prishaa_rajesh.jpg';
+import iman_hafeez from '../assets/iman_hafeez.jpg';
+import shruthi_sridhar from '../assets/shruthi_sridhar.jpg';
+import rithika_rajesh from '../assets/rithika_rajesh.jpg';
+import diya_satanur from '../assets/diya_satanur.jpg';
+import riya_mathews from '../assets/riya_mathews.jpg';
+import aanchal_capoor from '../assets/aanchal_capoor.jpg';
+import megha_brahmbhatt from '../assets/megha_brahmbhatt.jpg';
+import keshav_shah from '../assets/keshav_shah.jpg';
+import krishna_maganti from '../assets/krishna_maganti.jpg';
 
 // ── Scroll-reveal hook ────────────────────────────────────────
 function useReveal() {
@@ -63,104 +89,104 @@ const departments: {
     dept: 'Directors',
     email: 'nakshatrauw@gmail.com',
     members: [
-      { name: 'Sudeeksha Nooka', photo: 'src/assets/sudeeksha_nooka.jpg' },
-      { name: 'Rohan Vuppalapati', photo: 'src/assets/rohan_vuppalapati.jpg' },
-      { name: 'Rhianna Nakrani', photo: 'src/assets/rhianna_nakrani.jpg' },
+      { name: 'Sudeeksha Nooka', photo: sudeeksha_nooka },
+      { name: 'Rohan Vuppalapati', photo: rohan_vuppalapati },
+      { name: 'Rhianna Nakrani', photo: rhianna_nakrani },
     ],
   },
   {
     dept: 'Events',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Diya Gopinath', photo: 'src/assets/diya_gopinath.jpg' },
-      { name: 'Mardav Shah', photo: 'src/assets/mardav_shah.jpg' },
+      { name: 'Diya Gopinath', photo: diya_gopinath },
+      { name: 'Mardav Shah', photo: mardav_shah },
     ],
   },
   {
     dept: 'Finance',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Raja Chinnakotla', photo: 'src/assets/raja_chinnakotla.jpg' },
+      { name: 'Raja Chinnakotla', photo: raja_chinnakotla },
     ],
   },
   {
     dept: 'Fundraising',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Isha Darshan Lokande', photo: 'src/assets/isha_darshan_lokande.jpg', objectPosition: 'center 60%' },
-      { name: 'Sanjay Murali', photo: 'src/assets/sanjay_murali.jpg' },
-      { name: 'Srikar Kalapala', photo: 'src/assets/srikar_kalapala.jpg' },
+      { name: 'Isha Darshan Lokande', photo: isha_darshan_lokande, objectPosition: 'center 60%' },
+      { name: 'Sanjay Murali', photo: sanjay_murali },
+      { name: 'Srikar Kalapala', photo: srikar_kalapala },
     ],
   },
   {
     dept: 'Head Liaisons',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Ayush Harish', photo: 'src/assets/ayush_harish.jpg' },
-      { name: 'Kaitlyn Narman', photo: 'src/assets/kaitlyn_narman.jpg' },
+      { name: 'Ayush Harish', photo: ayush_harish },
+      { name: 'Kaitlyn Narman', photo: kaitlyn_narman },
     ],
   },
   {
     dept: 'Hospitality',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Akshita Tirumalaraju', photo: 'src/assets/akshita_tirumalaraju.jpg' },
-      { name: 'Sobhan Pandey', photo: 'src/assets/sobhan_pandey.jpg' },
+      { name: 'Akshita Tirumalaraju', photo: akshita_tirumalaraju },
+      { name: 'Sobhan Pandey', photo: sobhan_pandey },
     ],
   },
   {
     dept: 'Judging',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Nandini Shah', photo: 'src/assets/nandini_shah.jpg' },
-      { name: 'Vinay Ramanathan', photo: 'src/assets/vinay_ramanathan.jpg' },
+      { name: 'Nandini Shah', photo: nandini_shah },
+      { name: 'Vinay Ramanathan', photo: vinay_ramanathan },
     ],
   },
   {
     dept: 'Logistics',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Aniruddh Mayya', photo: 'src/assets/aniruddh_mayya.jpg' },
-      { name: 'Prishaa Rajesh', photo: 'src/assets/prishaa_rajesh.jpg' },
+      { name: 'Aniruddh Mayya', photo: aniruddh_mayya },
+      { name: 'Prishaa Rajesh', photo: prishaa_rajesh },
     ],
   },
   {
     dept: 'Marketing',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Iman Hafeez', photo: 'src/assets/iman_hafeez.jpg' },
-      { name: 'Shruthi Sridhar', photo: 'src/assets/shruthi_sridhar.jpg', objectPosition: 'center 40%' },
+      { name: 'Iman Hafeez', photo: iman_hafeez },
+      { name: 'Shruthi Sridhar', photo: shruthi_sridhar, objectPosition: 'center 40%' },
     ],
   },
   {
     dept: 'Philanthropy',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Rithika Rajesh', photo: 'src/assets/rithika_rajesh.jpg' },
+      { name: 'Rithika Rajesh', photo: rithika_rajesh },
     ],
   },
   {
     dept: 'Registration',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Diya Satanur', photo: 'src/assets/diya_satanur.jpg' },
-      { name: 'Riya Mathews', photo: 'src/assets/riya_mathews.jpg' },
+      { name: 'Diya Satanur', photo: diya_satanur },
+      { name: 'Riya Mathews', photo: riya_mathews },
     ],
   },
   {
     dept: 'Risk & Affiliation',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Aanchal Capoor', photo: 'src/assets/aanchal_capoor.jpg' },
-      { name: 'Megha Brahmbhatt', photo: 'src/assets/megha_brahmbhatt.jpg' },
+      { name: 'Aanchal Capoor', photo: aanchal_capoor },
+      { name: 'Megha Brahmbhatt', photo: megha_brahmbhatt },
     ],
   },
   {
     dept: 'Tech',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Keshav Shah', photo: 'src/assets/keshav_shah.jpg', objectPosition: 'center 40%' },
-      { name: 'Krishna Maganti', photo: 'src/assets/krishna_maganti.jpg' },
+      { name: 'Keshav Shah', photo: keshav_shah, objectPosition: 'center 40%' },
+      { name: 'Krishna Maganti', photo: krishna_maganti },
     ],
   },
 ];
