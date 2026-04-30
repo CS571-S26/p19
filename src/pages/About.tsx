@@ -45,114 +45,122 @@ function Reveal({ children, delay = 0, height }: { children: React.ReactNode; de
   );
 }
 
+// ── Helper function for initials ──────────────────────────────
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .map(part => part.charAt(0).toUpperCase())
+    .join('');
+}
+
 // ── Data ──────────────────────────────────────────────────────
 const departments: {
   dept: string;
   email: string;
-  members: { name: string; }[];
+  members: { name: string; photo: string; objectPosition?: string; transform?: string; }[];
 }[] = [
   {
     dept: 'Directors',
     email: 'nakshatrauw@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Sudeeksha Nooka', photo: 'src/assets/sudeeksha_nooka.jpg' },
+      { name: 'Rohan Vuppalapati', photo: 'src/assets/rohan_vuppalapati.jpg' },
+      { name: 'Rhianna Nakrani', photo: 'src/assets/rhianna_nakrani.jpg' },
     ],
   },
   {
     dept: 'Events',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Diya Gopinath', photo: 'src/assets/diya_gopinath.jpg' },
+      { name: 'Mardav Shah', photo: 'src/assets/mardav_shah.jpg' },
     ],
   },
   {
     dept: 'Finance',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Name TBD' },
+      { name: 'Raja Chinnakotla', photo: 'src/assets/raja_chinnakotla.jpg' },
     ],
   },
   {
     dept: 'Fundraising',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Isha Darshan Lokande', photo: 'src/assets/isha_darshan_lokande.jpg', objectPosition: 'center 60%' },
+      { name: 'Sanjay Murali', photo: 'src/assets/sanjay_murali.jpg' },
+      { name: 'Srikar Kalapala', photo: 'src/assets/srikar_kalapala.jpg' },
     ],
   },
   {
-    dept: 'Head Liasion',
+    dept: 'Head Liaisons',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Ayush Harish', photo: 'src/assets/ayush_harish.jpg' },
+      { name: 'Kaitlyn Narman', photo: 'src/assets/kaitlyn_narman.jpg' },
     ],
   },
   {
     dept: 'Hospitality',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Akshita Tirumalaraju', photo: 'src/assets/akshita_tirumalaraju.jpg' },
+      { name: 'Sobhan Pandey', photo: 'src/assets/sobhan_pandey.jpg' },
     ],
   },
   {
     dept: 'Judging',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Nandini Shah', photo: 'src/assets/nandini_shah.jpg' },
+      { name: 'Vinay Ramanathan', photo: 'src/assets/vinay_ramanathan.jpg' },
     ],
   },
   {
     dept: 'Logistics',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Aniruddh Mayya', photo: 'src/assets/aniruddh_mayya.jpg' },
+      { name: 'Prishaa Rajesh', photo: 'src/assets/prishaa_rajesh.jpg' },
     ],
   },
   {
     dept: 'Marketing',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Iman Hafeez', photo: 'src/assets/iman_hafeez.jpg' },
+      { name: 'Shruthi Sridhar', photo: 'src/assets/shruthi_sridhar.jpg', objectPosition: 'center 40%' },
     ],
   },
   {
-    dept: 'Philanthrophy',
+    dept: 'Philanthropy',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Name TBD' },
+      { name: 'Rithika Rajesh', photo: 'src/assets/rithika_rajesh.jpg' },
     ],
   },
   {
     dept: 'Registration',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Diya Satanur', photo: 'src/assets/diya_satanur.jpg' },
+      { name: 'Riya Mathews', photo: 'src/assets/riya_mathews.jpg' },
     ],
   },
   {
-    dept: 'Risk and Affiliation',
+    dept: 'Risk & Affiliation',
     email: 'nakshatrauw.relations@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Aanchal Capoor', photo: 'src/assets/aanchal_capoor.jpg' },
+      { name: 'Megha Brahmbhatt', photo: 'src/assets/megha_brahmbhatt.jpg' },
     ],
   },
   {
     dept: 'Tech',
     email: 'nakshatrauw.finance@gmail.com',
     members: [
-      { name: 'Name TBD' },
-      { name: 'Name TBD' },
+      { name: 'Keshav Shah', photo: 'src/assets/keshav_shah.jpg', objectPosition: 'center 40%' },
+      { name: 'Krishna Maganti', photo: 'src/assets/krishna_maganti.jpg' },
     ],
   },
 ];
@@ -258,9 +266,9 @@ export default function About() {
             {/* Department title slides up first */}
             <Reveal delay={0}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <h4 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.5rem', fontWeight: 600, letterSpacing: '0.06em', margin: 0 }}>
+                <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.5rem', fontWeight: 600, letterSpacing: '0.06em', margin: 0 }}>
                   {dept.dept}
-                </h4>
+                </h2>
                 <div style={{ flex: 1, height: '1px', background: 'var(--border-gold)' }} />
                 <a href={`mailto:${dept.email}`} style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--text-secondary)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
                   {dept.email}
@@ -273,8 +281,41 @@ export default function About() {
               {dept.members.map((m, mi) => (
                 <Col key={mi} xs={12} sm={6} md={4} lg={3}>
                   <Reveal delay={0.1 + mi * 0.08}>
-                    <div className="glass-card" style={{ padding: '1.1rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                      <div style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.92rem' }}>
+                    <div style={{ overflow: 'hidden', borderRadius: '6px', background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border-purple)' }}>
+                      <img
+                        src={m.photo}
+                        alt={m.name}
+                        style={{
+                          width: '100%',
+                          height: '280px',
+                          objectFit: 'cover',
+                          objectPosition: m.objectPosition || 'center 60%',
+                          transform: m.transform,
+                          display: 'block'
+                        }}
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const fallback = target.nextElementSibling as HTMLDivElement;
+                          if (fallback) fallback.style.display = 'flex';
+                        }}
+                      />
+                      <div
+                        style={{
+                          width: '100%',
+                          height: '280px',
+                          background: 'rgba(107, 33, 168, 0.2)',
+                          color: 'var(--gold)',
+                          display: 'none',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1.5rem',
+                          fontFamily: 'var(--font-heading)'
+                        }}
+                      >
+                        {getInitials(m.name)}
+                      </div>
+                      <div style={{ padding: '0.75rem', textAlign: 'center', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.88rem' }}>
                         {m.name}
                       </div>
                     </div>

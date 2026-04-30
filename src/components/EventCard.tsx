@@ -30,10 +30,10 @@ export default function EventCard({ title, type, date, time, location, descripti
         </h5>
 
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '0.3rem' }}>
-          📅 {date} · {time}
+          <span aria-hidden="true">📅</span> {date} · {time}
         </p>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '1rem' }}>
-          📍 {location}
+          <span aria-hidden="true">📍</span> {location}
         </p>
 
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65, flex: 1, marginBottom: '1.5rem' }}>

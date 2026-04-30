@@ -9,7 +9,7 @@ export default function NavBar() {
     <Navbar expand="lg" fixed="top" className="nakshatra-navbar">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="navbar-brand-text">
-          ✦ NAKSHATRA
+          <span aria-hidden="true">✦</span> NAKSHATRA
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="main-nav"

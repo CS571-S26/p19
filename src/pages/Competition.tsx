@@ -4,10 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 const placeholders = [
-  { icon: '📅', label: 'Date', value: 'Spring 2027' },
-  { icon: '📍', label: 'Venue', value: 'TBD' },
-  { icon: '🎟️', label: 'Admission', value: 'Free & open to the public' },
-  { icon: '🎞️', label: 'Livestream', value: 'Link to be announced' },
+  { icon: <span aria-hidden="true">📅</span>, label: 'Date', value: 'Spring 2027' },
+  { icon: <span aria-hidden="true">📍</span>, label: 'Venue', value: 'TBD' },
+  { icon: <span aria-hidden="true">🎟️</span>, label: 'Admission', value: 'Free & open to the public' },
+  { icon: <span aria-hidden="true">🎞️</span>, label: 'Livestream', value: 'Link to be announced' },
 ];
 
 export default function Competition() {
@@ -51,9 +51,9 @@ export default function Competition() {
         <Row className="justify-content-center">
           <Col lg={8}>
             <div className="glass-card" style={{ padding: '2.5rem' }}>
-              <h4 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', marginBottom: '1rem' }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', marginBottom: '1rem' }}>
                 About the Event
-              </h4>
+              </h2>
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0 }}>
                 Eight of the most talented collegiate Indian classical dance teams from across the nation come
                 together on a single stage at UW-Madison. Teams compete across multiple classical Indian dance

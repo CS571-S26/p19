@@ -9,7 +9,7 @@ export default function Footer() {
         <Row className="align-items-start g-4">
           <Col md={4}>
             <div style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--gold)', letterSpacing: '0.18em', marginBottom: '0.5rem' }}>
-              ✦ NAKSHATRA
+              <span aria-hidden="true">✦</span> NAKSHATRA
             </div>
             <p style={{ margin: 0, lineHeight: 1.6, color: 'var(--text-secondary)' }}>
               The premier Indian classical dance competition at the University of Wisconsin–Madison.
@@ -23,7 +23,7 @@ export default function Footer() {
             <div style={{ height: '1px', background: 'var(--border-gold)', marginBottom: '0.6rem', margin: '0 auto 0.6rem' }} />
             {['Multicultural Student Center (MSC)', 'International Student Services (ISS)', 'SOLI Accredited RSO'].map(item => (
               <p key={item} style={{ color: 'var(--text-secondary)', margin: '0 0 0.4rem', fontSize: '0.88rem' }}>
-                <span style={{ color: 'var(--gold)', marginRight: '0.4rem', fontSize: '0.6rem' }}>✦</span>
+                <span aria-hidden="true" style={{ color: 'var(--gold)', marginRight: '0.4rem', fontSize: '0.6rem' }}>✦</span>
                 {item}
               </p>
             ))}

@@ -17,7 +17,7 @@ export default function RSVPForm({ eventName }: RSVPFormProps) {
   if (submitted) {
     return (
       <div className="confirmation-box">
-        <div style={{ fontSize: '1.8rem', marginBottom: '0.5rem', color: 'var(--gold)' }}>✦</div>
+        <div style={{ fontSize: '1.8rem', marginBottom: '0.5rem', color: 'var(--gold)' }}><span aria-hidden="true">✦</span></div>
         <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', color: 'var(--gold)', fontWeight: 600, marginBottom: '0.4rem' }}>
           You're registered!
         </p>
@@ -33,8 +33,9 @@ export default function RSVPForm({ eventName }: RSVPFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <div style={{ marginBottom: '1rem' }}>
-        <label className="form-label-dark">Name</label>
+        <label className="form-label-dark" htmlFor="rsvp-name">Name</label>
         <input
+          id="rsvp-name"
           className="form-control form-control-dark"
           type="text"
           placeholder="Your full name"
@@ -44,8 +45,9 @@ export default function RSVPForm({ eventName }: RSVPFormProps) {
         />
       </div>
       <div style={{ marginBottom: '1.25rem' }}>
-        <label className="form-label-dark">Email</label>
+        <label className="form-label-dark" htmlFor="rsvp-email">Email</label>
         <input
+          id="rsvp-email"
           className="form-control form-control-dark"
           type="email"
           placeholder="your@email.com"

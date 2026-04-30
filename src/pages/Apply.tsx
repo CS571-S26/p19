@@ -79,6 +79,13 @@ export default function Apply() {
     }
   }
 
+  function handleKeyDown(e: React.KeyboardEvent, title: string) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleRoleSelect(title);
+    }
+  }
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -123,6 +130,9 @@ export default function Apply() {
                 <div
                   className="glass-card role-card"
                   onClick={() => handleRoleSelect(role.title)}
+                  onKeyDown={(e) => handleKeyDown(e, role.title)}
+                  role="button"
+                  tabIndex={0}
                   style={{
                     padding: '2rem',
                     cursor: 'pointer',
@@ -150,9 +160,9 @@ export default function Apply() {
                       ✓
                     </div>
                   )}
-                  <h5 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.6rem' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--gold)', fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.6rem' }}>
                     {role.title}
-                  </h5>
+                  </h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1rem' }}>
                     {role.description}
                   </p>
@@ -179,7 +189,7 @@ export default function Apply() {
                   </>
                 ) : submitted ? (
                   <>
-                    <div style={{ fontSize: '2rem', color: 'var(--gold)', marginBottom: '0.5rem' }}>✦</div>
+                    <div style={{ fontSize: '2rem', color: 'var(--gold)', marginBottom: '0.5rem' }}><span aria-hidden="true">✦</span></div>
                     <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--gold)', fontWeight: 600, marginBottom: '0.5rem' }}>
                       Application Received!
                     </p>
@@ -193,16 +203,16 @@ export default function Apply() {
                   <form onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
                     <Row className="g-3">
                       <Col sm={6}>
-                        <label className="form-label-dark">Full Name</label>
-                        <input name="name" className="form-control form-control-dark" placeholder="Your name" value={form.name} onChange={handleChange} required />
+                        <label className="form-label-dark" htmlFor="apply-name">Full Name</label>
+                        <input id="apply-name" name="name" className="form-control form-control-dark" placeholder="Your name" value={form.name} onChange={handleChange} required />
                       </Col>
                       <Col sm={6}>
-                        <label className="form-label-dark">Email</label>
-                        <input name="email" type="email" className="form-control form-control-dark" placeholder="your@wisc.edu" value={form.email} onChange={handleChange} required />
+                        <label className="form-label-dark" htmlFor="apply-email">Email</label>
+                        <input id="apply-email" name="email" type="email" className="form-control form-control-dark" placeholder="your@wisc.edu" value={form.email} onChange={handleChange} required />
                       </Col>
                       <Col xs={12}>
-                        <label className="form-label-dark">Year</label>
-                        <select name="year" className="form-select form-select-dark" value={form.year} onChange={handleChange} required>
+                        <label className="form-label-dark" htmlFor="apply-year">Year</label>
+                        <select id="apply-year" name="year" className="form-select form-select-dark" value={form.year} onChange={handleChange} required>
                           <option value="">Select year</option>
                           <option>Freshman</option>
                           <option>Sophomore</option>
